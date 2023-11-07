@@ -1,0 +1,85 @@
+<?php
+/*
+Template Name:アーカイブ_ソリマチ株式会社
+*/
+?>
+
+<?php get_header(); ?>
+
+<div id="contents_cms" class="clearfix">
+<div class="inner">
+
+
+<div class="nr_area">
+
+<?php if( strstr( $_SERVER['REQUEST_URI'], 'category/movie' ) ): ?>
+	//URLに「category/movie」が含まれている場合の処理
+<h1>動画コンテンツ<span class="fs2">－<?php $category = get_the_category(); $cat_name = $category[0]->cat_name; echo $cat_name; ?>－</span></h1>
+<p>商工会クラウドの概要や操作方法に関する動画や法令改正のポイントの動画などをご視聴いただけます。</p>
+
+<ul class="movie_category" style="margin:0 0 20px 0">
+<li><a href="<?php echo get_category_link( 4 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 4 ); ?></a></li>
+<li><a href="<?php echo get_category_link( 5 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 5 ); ?></a></li>
+<li><a href="<?php echo get_category_link( 6 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 6 ); ?></a></li>
+	<li><a href="<?php echo get_category_link( 8 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 8 ); ?></a></li>
+</ul>
+<p>&nbsp;</p>
+<p style="margin-top:20px;">動画タイトルをクリックすると、閲覧することができます。</p>
+
+<?php elseif( strstr( $_SERVER['REQUEST_URI'], 'category/faq-category-01' ) ): ?>
+	//URLに「category/faq-category-01」が含まれている場合の処理
+<h1>FAQコンテンツ<span class="fs2">－<?php $category = get_the_category(); $cat_name = $category[0]->cat_name; echo $cat_name; ?>－</span></h1>
+<p>★商工会クラウドの概要や操作方法に関する動画や法令改正のポイントのFAQなどをご視聴いただけます。</p>
+
+<ul class="movie_category" style="margin:0 0 20px 0">
+<li><a href="<?php echo get_category_link( 13 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 13 ); ?></a></li>
+<li><a href="<?php echo get_category_link( 14 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 14 ); ?></a></li>
+<li><a href="<?php echo get_category_link( 15 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 15 ); ?></a></li>
+<li><a href="<?php echo get_category_link( 16 );?>">
+<?php echo $cat_name = get_the_category_by_ID( 16 ); ?></a></li>
+</ul>
+<p>&nbsp;</p>
+<p style="margin-top:20px;">FAQタイトルをクリックすると、閲覧することができます。</p>
+
+<?php else: ?>
+	//それ以外の場合
+<?php endif; ?>
+
+
+<div id="mv">
+<table style="margin:20px 0 0 0;">
+<?php query_posts($query_string .'&order=modified'); ?>
+<?php if(have_posts()):while(have_posts()):the_post(); ?>
+<tr>
+
+<td width="960px" style="padding:10px"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></td>
+</tr>
+<?php endwhile;endif; ?>
+</table>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="clearfix"></div>
+<!-- /.inner -->
+</div>
+<!-- /#contents -->
+</div>
+
+<?php get_footer(); ?>
+
+</body>
+</html>
