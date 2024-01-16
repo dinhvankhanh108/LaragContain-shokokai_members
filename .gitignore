@@ -4,7 +4,6 @@
 .vscode
 *.rar
 *.zip
-logs/
 *BK*
 *Copy*
 images/
